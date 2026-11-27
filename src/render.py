@@ -68,7 +68,7 @@ def header(brand, tagline, accent, n, total):
 def footer(repo, accent):
     return (rect(60, H - 150, W - 120, 2, accent, rx=1, opacity=0.5)
             + text(60, H - 90, "github.com/KhaledDawod88/" + repo, 28, "#ffffffaa", 500)
-            + text(W - 60, H - 90, "free tools only", 28, accent, 600, "end"))
+            + text(W - 60, H - 90, "by Khaled Dawod", 28, accent, 700, "end"))
 
 
 def title_block(s, y, size=78, fill="#fff", width=20, anchor="start", x=60):
@@ -285,6 +285,7 @@ def L_noor(it, n, total, c):
     s += t
     p, pw = pill((W - int(len(it["ref"]) * 30 * 0.58 + 56)) // 2, y0 + h - 100, it["ref"], c["accent"], "#0b1020", 30)
     s += p
+    s += text(W // 2, H - 140, "by Khaled Dawod", 30, "#f6e3a1", 700, "middle")
     s += text(W // 2, H - 90, it.get("note", "English is a meaning of the text, not a word-for-word translation."), 24, "#ffffffb0", 500, "middle")
     return svg_doc(s, c["c1"], c["c2"], mask)
 
