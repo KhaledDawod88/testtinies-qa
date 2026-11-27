@@ -1,0 +1,21 @@
+name: build-daily-card
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 5 * * *"
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Render today's card (SVG, PNG, MP4)
+        run: python src/render.py --video
+      - uses: actions/upload-artifact@v4
+        with:
+          name: testtinies-daily
+          path: out/
