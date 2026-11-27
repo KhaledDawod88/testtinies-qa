@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Boundary value analysis",
+    "scenario": "An age field accepts values from 18 to 60. Which inputs should you test?",
+    "cases": [
+      [
+        "17",
+        false,
+        "just below the minimum: reject"
+      ],
+      [
+        "18",
+        true,
+        "minimum: accept"
+      ],
+      [
+        "19",
+        true,
+        "just above the minimum: accept"
+      ],
+      [
+        "59",
+        true,
+        "just below the maximum: accept"
+      ],
+      [
+        "60",
+        true,
+        "maximum: accept"
+      ],
+      [
+        "61",
+        false,
+        "just above the maximum: reject"
+      ]
+    ],
+    "tip": "Bugs hide at the edges. Test the boundary, one step inside and one step outside."
+  },
+  {
+    "title": "Equivalence partitioning",
+    "scenario": "A password needs 8 to 16 characters. You do not need 20 tests. Pick one value per group.",
+    "cases": [
+      [
+        "abc123",
+        false,
+        "too short group"
+      ],
+      [
+        "Passw0rd!",
+        true,
+        "valid group"
+      ],
+      [
+        "a-very-long-password-123",
+        false,
+        "too long group"
+      ],
+      [
+        "(empty)",
+        false,
+        "empty group"
+      ]
+    ],
+    "tip": "Split the inputs into groups that behave the same, then test one value from each group."
+  },
+  {
+    "title": "Smoke test vs regression test",
+    "scenario": "A new build arrives. Run these in order.",
+    "cases": [
+      [
+        "Smoke: app opens",
+        true,
+        "5 minutes: is the build testable?"
+      ],
+      [
+        "Smoke: login works",
+        true,
+        "if this fails, stop and report"
+      ],
+      [
+        "Regression: old features",
+        true,
+        "after smoke passes: did anything break?"
+      ]
+    ],
+    "tip": "Smoke asks 'is it alive?'. Regression asks 'did we break something that worked?'"
+  },
+  {
+    "title": "A bug report people can fix",
+    "scenario": "Developers act faster when the report has all five parts.",
+    "cases": [
+      [
+        "Clear title",
+        true,
+        "what is broken, where"
+      ],
+      [
+        "Steps to reproduce",
+        true,
+        "numbered and short"
+      ],
+      [
+        "Expected result",
+        true,
+        "what should happen"
+      ],
+      [
+        "Actual result",
+        true,
+        "what happened, with screenshot"
+      ],
+      [
+        "Severity",
+        true,
+        "impact on the user"
+      ]
+    ],
+    "tip": "If a developer has to ask you a question, the report was missing something."
+  },
+  {
+    "title": "Negative testing a login",
+    "scenario": "Good testers try to break the form on purpose.",
+    "cases": [
+      [
+        "Wrong password",
+        false,
+        "clear error, no account hint"
+      ],
+      [
+        "Empty fields",
+        false,
+        "validation message"
+      ],
+      [
+        "Very long username",
+        false,
+        "no crash"
+      ],
+      [
+        "SQL text in the box",
+        false,
+        "treated as plain text"
+      ],
+      [
+        "Valid login",
+        true,
+        "the happy path still works"
+      ]
+    ],
+    "tip": "Happy path first, then break it. Every rejected input should fail safely."
+  }
+]
