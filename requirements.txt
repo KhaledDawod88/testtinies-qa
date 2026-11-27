@@ -1,0 +1,2 @@
+# No Python packages needed (standard library only).
+# Optional system tools: google-chrome or chromium (PNG), ffmpeg (MP4).
